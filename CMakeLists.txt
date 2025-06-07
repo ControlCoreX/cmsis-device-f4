@@ -1,10 +1,11 @@
 # Date  : 2024-12-03
 # Author: tuwenbo
 
-target_include_directories(${EXECUTABLE_NAME} PRIVATE
-  "${CMAKE_CURRENT_LIST_DIR}/Include"
-)
+include($ENV{PW_ROOT}/pw_build/pigweed.cmake)
 
-target_sources(${EXECUTABLE_NAME} PRIVATE
-  "${CMAKE_CURRENT_LIST_DIR}/Source/Templates/system_stm32f4xx.c"
+pw_add_library(cmsis_device_f4 STATIC
+    PUBLIC_INCLUDES
+        Include
+    SOURCES
+        Source/Templates/system_stm32f4xx.c
 )
